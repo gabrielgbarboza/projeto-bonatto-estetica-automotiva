@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento - Bonatto Estética Automotiva</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Bonatto Estética Automotiva Logo" class="logo">
+        </div>
+        <nav>
+            <div class="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="quem-somos.html">Quem Somos</a></li>
+                <li><a href="orcamento.html" class="active">Orçamento</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-banner">
+        <div class="banner-content">
+            <h1>Solicite um Orçamento</h1>
+            <p>Preencha o formulário abaixo para solicitar um orçamento personalizado</p>
+        </div>
+    </section>
+
+    <section class="form-section">
+        <div class="form-container">
+            <div class="form-info">
+                <h2>Entre em Contato</h2>
+                <p>Preencha o formulário com seus dados e informações sobre o serviço desejado. Entraremos em contato o mais breve possível com seu orçamento personalizado.</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt" style="position: relative; top: -16px;"></i>
+                        <p>Bairro Santinho, Florianópolis - SC</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone" style="position: relative; top: -16px;"></i>
+                        <p>(48) 9188-2779</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope" style="position: relative; top: -16px;"></i>
+                        <p>contato@bonattoautomotiva.com.br</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock" style="position: relative; top: -16px;"></i>
+                        <p>Segunda a Sexta: 8h às 18h | Sábado: 8h às 12h</p>
+                    </div>
+                </div>
+            </div>
+            <form id="orcamento-form" action="enviar.php" method="POST">
+                <div class="form-group">
+                    <label for="nome">Nome completo*</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail*</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone/WhatsApp*</label>
+                    <input type="tel" id="telefone" name="telefone" required>
+                </div>
+                <div class="form-group">
+                    <label for="veiculo">Veículo*</label>
+                    <input type="text" id="veiculo" name="veiculo" placeholder="Marca, modelo e ano" required>
+                </div>
+                <div class="form-group">
+                    <label>Serviços de interesse*</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="polimento" name="servicos[]" value="Polimento">
+                            <label for="polimento">Polimento</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="higienizacao" name="servicos[]" value="Higienização">
+                            <label for="higienizacao">Higienização</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="vitrificacao" name="servicos[]" value="Vitrificação">
+                            <label for="vitrificacao">Vitrificação</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lavagem" name="servicos[]" value="Lavagem detalhada">
+                            <label for="lavagem">Lavagem detalhada</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="outros" name="servicos[]" value="Outros">
+                            <label for="outros">Outros</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" id="outros-servicos-container" style="display: none;">
+                    <label for="outros-servicos">Especifique outros serviços</label>
+                    <textarea id="outros-servicos" name="outros-servicos" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="mensagem">Mensagem adicional</label>
+                    <textarea id="mensagem" name="mensagem" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn-submit">Enviar Orçamento</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section class="services-info">
+        <div class="section-header">
+            <h2>Nossos Serviços</h2>
+            <p>Conheça mais sobre os serviços que oferecemos</p>
+        </div>
+        <div class="services-info-container">
+            <div class="service-info-item">
+                <h3>Polimento</h3>
+                <p>Processo que remove riscos, marcas de água, manchas e imperfeições da pintura do veículo, devolvendo o brilho original e deixando a superfície lisa e uniforme.</p>
+            </div>
+            <div class="service-info-item">
+                <h3>Higienização</h3>
+                <p>Limpeza profunda de todos os componentes internos do veículo, incluindo bancos, carpetes, teto, painel e portas, removendo sujeiras, manchas e odores indesejados.</p>
+            </div>
+            <div class="service-info-item">
+                <h3>Vitrificação</h3>
+                <p>Aplicação de proteção duradoura na pintura do veículo, formando uma camada que protege contra raios UV, chuva ácida e contaminações, além de realçar o brilho.</p>
+            </div>
+            <div class="service-info-item">
+                <h3>Lavagem Detalhada</h3>
+                <p>Limpeza completa do veículo, incluindo parte externa, rodas, pneus, motor e interior, utilizando produtos específicos para cada superfície.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="section-header">
+            <h2>Perguntas Frequentes</h2>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Quanto tempo dura uma vitrificação?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>A duração da vitrificação varia de acordo com o produto utilizado, geralmente entre 6 meses a 2 anos, dependendo também dos cuidados com o veículo.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>É necessário agendar com antecedência?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Sim, todos os serviços são realizados mediante agendamento prévio para garantir um atendimento exclusivo e personalizado.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Qual o tempo médio para realização dos serviços?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>O tempo varia de acordo com o serviço. Uma higienização completa pode levar de 4 a 8 horas, enquanto um polimento completo pode levar de 1 a 2 dias.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Vocês oferecem serviços a domicílio?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Para alguns serviços, oferecemos atendimento a domicílio dentro da região de Florianópolis, mediante consulta prévia de disponibilidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="cta-content">
+            <h2>Pronto para transformar seu veículo?</h2>
+            <p>Entre em contato pelo WhatsApp para um atendimento ainda mais rápido.</p>
+            <a href="https://wa.me/5548999999999" class="btn"><i class="fab fa-whatsapp"></i> Contato via WhatsApp</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info" style="text-align: center;">
+                <img src="logo.jpg" alt="Bonatto Estética Automotiva Logo" class="footer-logo" style="margin: 0 auto; width: 200px;">
+                <p>Serviços de estética automotiva de alta qualidade em Florianópolis.</p>
+            </div>
+            <div class="footer-contact">
+                <h3>Contato</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Bairro Santinho, Florianópolis - SC</p>
+                <p><i class="fas fa-phone"></i> (48) 9188-2779</p>
+                <p><i class="fas fa-envelope"></i> contato@bonattoautomotiva.com.br</p>
+            </div>
+            <div class="footer-social">
+                <h3>Redes Sociais</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/p/Bonatto-Estética-Automotiva-100043148096655/?_rdr"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/bonatto_estetica_automotiva/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/c/554891882779"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Bonatto Estética Automotiva. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
