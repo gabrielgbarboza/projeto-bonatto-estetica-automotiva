@@ -57,60 +57,60 @@
                     </div>
                 </div>
             </div>
-            <form id="orcamento-form" name="orcamento-form" netlify">
-                <div class="form-group">
-                    <label for="nome">Nome completo*</label>
-                    <input type="text" id="nome" name="nome" required>
+            <form id="orcamento-form" name="orcamento" method="POST" data-netlify="true"">
+                <div class=" form-group">
+                <label for="nome">Nome completo*</label>
+                <input type="text" id="nome" name="nome" required>
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail*</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="telefone">Telefone/WhatsApp*</label>
+            <input type="tel" id="telefone" name="telefone" required>
+        </div>
+        <div class="form-group">
+            <label for="veiculo">Veículo*</label>
+            <input type="text" id="veiculo" name="veiculo" placeholder="Marca, modelo e ano" required>
+        </div>
+        <div class="form-group">
+            <label>Serviços de interesse*</label>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="polimento" name="servicos[]" value="Polimento">
+                    <label for="polimento">Polimento</label>
                 </div>
-                <div class="form-group">
-                    <label for="email">E-mail*</label>
-                    <input type="email" id="email" name="email" required>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="higienizacao" name="servicos[]" value="Higienização">
+                    <label for="higienizacao">Higienização</label>
                 </div>
-                <div class="form-group">
-                    <label for="telefone">Telefone/WhatsApp*</label>
-                    <input type="tel" id="telefone" name="telefone" required>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="vitrificacao" name="servicos[]" value="Vitrificação">
+                    <label for="vitrificacao">Vitrificação</label>
                 </div>
-                <div class="form-group">
-                    <label for="veiculo">Veículo*</label>
-                    <input type="text" id="veiculo" name="veiculo" placeholder="Marca, modelo e ano" required>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="lavagem" name="servicos[]" value="Lavagem detalhada">
+                    <label for="lavagem">Lavagem detalhada</label>
                 </div>
-                <div class="form-group">
-                    <label>Serviços de interesse*</label>
-                    <div class="checkbox-group">
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="polimento" name="servicos[]" value="Polimento">
-                            <label for="polimento">Polimento</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="higienizacao" name="servicos[]" value="Higienização">
-                            <label for="higienizacao">Higienização</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="vitrificacao" name="servicos[]" value="Vitrificação">
-                            <label for="vitrificacao">Vitrificação</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="lavagem" name="servicos[]" value="Lavagem detalhada">
-                            <label for="lavagem">Lavagem detalhada</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="outros" name="servicos[]" value="Outros">
-                            <label for="outros">Outros</label>
-                        </div>
-                    </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="outros" name="servicos[]" value="Outros">
+                    <label for="outros">Outros</label>
                 </div>
-                <div class="form-group" id="outros-servicos-container" style="display: none;">
-                    <label for="outros-servicos">Especifique outros serviços</label>
-                    <textarea id="outros-servicos" name="outros-servicos" rows="3"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="mensagem">Mensagem adicional</label>
-                    <textarea id="mensagem" name="mensagem" rows="5"></textarea>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn-submit">Enviar Orçamento</button>
-                </div>
-            </form>
+            </div>
+        </div>
+        <div class="form-group" id="outros-servicos-container" style="display: none;">
+            <label for="outros-servicos">Especifique outros serviços</label>
+            <textarea id="outros-servicos" name="outros-servicos" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="mensagem">Mensagem adicional</label>
+            <textarea id="mensagem" name="mensagem" rows="5"></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn-submit">Enviar Orçamento</button>
+        </div>
+        </form>
         </div>
     </section>
 
