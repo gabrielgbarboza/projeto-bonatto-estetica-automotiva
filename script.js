@@ -52,94 +52,15 @@ if (outrosCheckbox && outrosContainer) {
   });
 }
 
-// Form Validation
-const orcamentoForm = document.getElementById('orcamento-form');
-if (orcamentoForm) {
-  orcamentoForm.addEventListener('submit', function (e) {
-    let isValid = true;
-    const nome = document.getElementById('nome');
-    const email = document.getElementById('email');
-    const telefone = document.getElementById('telefone');
-    const veiculo = document.getElementById('veiculo');
-    const checkboxes = document.querySelectorAll('input[name="servicos[]"]');
-
-    // Reset error styles
-    const resetErrors = () => {
-      const fields = [nome, email, telefone, veiculo];
-      fields.forEach((field) => {
-        field.style.borderColor = '#ddd';
-      });
-    };
-
-    resetErrors();
-
-    // Validate required fields
-    if (nome.value.trim() === '') {
-      nome.style.borderColor = 'red';
-      isValid = false;
-    }
-
-    if (email.value.trim() === '') {
-      email.style.borderColor = 'red';
-      isValid = false;
-    } else {
-      // Simple email validation
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(email.value)) {
-        email.style.borderColor = 'red';
-        isValid = false;
-      }
-    }
-
-    if (telefone.value.trim() === '') {
-      telefone.style.borderColor = 'red';
-      isValid = false;
-    }
-
-    if (veiculo.value.trim() === '') {
-      veiculo.style.borderColor = 'red';
-      isValid = false;
-    }
-
-    // Check if at least one service is selected
-    let isServiceSelected = false;
-    checkboxes.forEach((checkbox) => {
-      if (checkbox.checked) {
-        isServiceSelected = true;
-      }
-    });
-
-    if (!isServiceSelected) {
-      checkboxes.forEach((checkbox) => {
-        checkbox.parentElement.style.color = 'red';
-      });
-      isValid = false;
-    }
-
-    // Validate "outros" field if checked
-    if (outrosCheckbox && outrosCheckbox.checked) {
-      const outrosServicos = document.getElementById('outros-servicos');
-      if (outrosServicos.value.trim() === '') {
-        outrosServicos.style.borderColor = 'red';
-        isValid = false;
-      }
-    }
-
-    if (!isValid) {
-      e.preventDefault();
-      // Scroll to first error
-      const firstError = document.querySelector(
-        'input[style*="border-color: red"]'
-      );
-      if (firstError) {
-        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-
-      // Show error message
-      alert('Por favor, preencha todos os campos obrigatórios corretamente.');
-    }
+// Reset error styles
+const resetErrors = () => {
+  const fields = [nome, email, telefone, veiculo];
+  fields.forEach((field) => {
+    field.style.borderColor = '#ddd';
   });
-}
+};
+
+resetErrors();
 
 // Animation on scroll
 window.addEventListener('scroll', function () {
