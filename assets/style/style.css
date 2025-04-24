@@ -179,7 +179,7 @@ header.sticky .logo {
 .hero {
   height: 100vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('carro1.jpg');
+    url('/assets/img/carro1.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -359,7 +359,7 @@ header.sticky .logo {
   border-radius: 10px;
   box-shadow: var(--shadow);
   position: relative;
-  padding-top: 50px
+  padding-top: 50px;
 }
 
 .testimonial::before {
@@ -394,7 +394,7 @@ header.sticky .logo {
 /* CTA Section */
 .cta {
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url('carro2.jpg');
+    url('/assets/img/carro2.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -506,7 +506,7 @@ footer {
   height: 40vh;
   min-height: 300px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url('carro1.jpg');
+    url('/assets/img/carro1.jpg');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -926,7 +926,7 @@ select:focus {
 
   .nav-links {
     position: fixed;
-    top: 80px;
+    top: 60px;
     left: -100%;
     width: 250px;
     height: calc(100vh - 80px);
