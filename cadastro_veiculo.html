@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Veículo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            border: 2px solid #e8f5e8;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #1a5f1a;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #1a5f1a;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: #fafafa;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #28a745;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+            transform: translateY(-2px);
+        }
+
+        input[type="text"]:hover {
+            border-color: #28a745;
+            background-color: #ffffff;
+        }
+
+        .btn-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .btn-save {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .btn-save:hover {
+            background: linear-gradient(135deg, #218838, #1dd1a1);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        }
+
+        .btn-save:active {
+            transform: translateY(-1px);
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #28a745;
+            display: none;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #28a745, transparent);
+            margin: 25px 0;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Cadastro de Veículo</h1>
+            <p>Preencha os dados do seu veículo</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="success-message" id="successMessage">
+            Veículo cadastrado com sucesso!
+        </div>
+
+        <form id="vehicleForm">
+            <div class="form-group">
+                <label for="placa">Placa</label>
+                <input type="text" id="placa" name="placa" placeholder="ABC-1234" maxlength="8" required>
+            </div>
+
+            <div class="form-group">
+                <label for="modelo">Modelo</label>
+                <input type="text" id="modelo" name="modelo" placeholder="Ex: Honda Civic, Toyota Corolla" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cor">Cor</label>
+                <input type="text" id="cor" name="cor" placeholder="Ex: Branco, Preto, Prata" required>
+            </div>
+
+            <div class="btn-container">
+                <button type="submit" class="btn-save">Salvar Veículo</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Formatação automática da placa
+        document.getElementById('placa').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
+            if (value.length > 3) {
+                value = value.substring(0, 3) + '-' + value.substring(3, 7);
+            }
+            e.target.value = value;
+        });
+
+        // Submissão do formulário
+        document.getElementById('vehicleForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const vehicleData = Object.fromEntries(formData);
+            
+            // Simulação de salvamento
+            console.log('Dados do veículo:', vehicleData);
+            
+            // Mostrar mensagem de sucesso
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            
+            // Limpar formulário
+            e.target.reset();
+            
+            // Esconder mensagem após 3 segundos
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+            
+            // Scroll suave para o topo
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Animação de entrada
+        window.addEventListener('load', function() {
+            const container = document.querySelector('.container');
+            container.style.opacity = '0';
+            container.style.transform = 'translateY(20px)';
+            container.style.transition = 'all 0.6s ease';
+            
+            setTimeout(() => {
+                container.style.opacity = '1';
+                container.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

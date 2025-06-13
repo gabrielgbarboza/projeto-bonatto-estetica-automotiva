@@ -22,9 +22,60 @@
                 <li><a href="index.html">Início</a></li>
                 <li><a href="quem-somos.html">Quem Somos</a></li>
                 <li><a href="orcamento.html" class="active">Orçamento</a></li>
+                <li><a href="#" class="login-link" id="loginBtn">
+                    <i class="fas fa-user"></i> Login
+                </a></li>
             </ul>
         </nav>
     </header>
+
+    <!-- Login Overlay -->
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-popup">
+            <button class="close-btn" id="closeLogin">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <h2>
+                <i class="fas fa-user-circle" style="margin-right: 10px; color: var(--primary-color);"></i>
+                Login
+            </h2>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">
+                        <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                        E-mail
+                    </label>
+                    <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fas fa-lock" style="margin-right: 8px;"></i>
+                        Senha
+                    </label>
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" required placeholder="Digite sua senha">
+                        <i class="fas fa-eye password-toggle" id="togglePassword"></i>
+                    </div>
+                </div>
+                
+                <div class="login-options">
+                    <label class="remember-me">
+                        <input type="checkbox" id="remember">
+                        <span>Lembrar-me</span>
+                    </label>
+                    <a href="#" class="forgot-password">Esqueci minha senha</a>
+                </div>
+                
+                <button type="submit" class="login-btn" id="loginButton">
+                    <i class="fas fa-sign-in-alt" style="margin-right: 8px;"></i>
+                    Entrar
+                </button>
+            </form>
+        </div>
+    </div>
 
     <section class="page-banner">
         <div class="banner-content">
@@ -219,6 +270,127 @@
     </footer>
 
     <script src="assets/js/script.js"></script>
+    <script>
+        // Aguarda o DOM carregar completamente
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM carregado, inicializando popup de login...');
+            
+            // Elementos do popup de login
+            const loginBtn = document.getElementById('loginBtn');
+            const loginOverlay = document.getElementById('loginOverlay');
+            const closeLogin = document.getElementById('closeLogin');
+            const loginForm = document.getElementById('loginForm');
+            const togglePassword = document.getElementById('togglePassword');
+            const passwordField = document.getElementById('password');
+            const loginButton = document.getElementById('loginButton');
+            const navLinks = document.querySelector('.nav-links');
+
+            // Verificar se os elementos existem
+            if (!loginBtn || !loginOverlay || !closeLogin) {
+                console.error('Elementos do popup não encontrados!');
+                return;
+            }
+
+            console.log('Elementos encontrados, configurando eventos...');
+
+            // Abrir popup de login
+            loginBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Botão login clicado!');
+                
+                // Fecha o menu mobile se estiver aberto
+                if (navLinks && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+                
+                loginOverlay.style.display = 'flex';
+                // Força o reflow antes de adicionar a classe active
+                loginOverlay.offsetHeight;
+                loginOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                console.log('Popup aberto');
+            });
+
+            // Fechar popup
+            function closeLoginPopup() {
+                console.log('Fechando popup...');
+                loginOverlay.classList.remove('active');
+                setTimeout(() => {
+                    loginOverlay.style.display = 'none';
+                }, 300);
+                document.body.style.overflow = 'auto';
+            }
+
+            // Evento do botão fechar
+            closeLogin.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                closeLoginPopup();
+            });
+
+            // Fechar clicando fora do popup
+            loginOverlay.addEventListener('click', function(e) {
+                if (e.target === loginOverlay) {
+                    closeLoginPopup();
+                }
+            });
+
+            // Fechar com ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && loginOverlay.classList.contains('active')) {
+                    closeLoginPopup();
+                }
+            });
+
+            // Toggle da senha
+            if (togglePassword && passwordField) {
+                togglePassword.addEventListener('click', function() {
+                    const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordField.setAttribute('type', type);
+                    this.classList.toggle('fa-eye');
+                    this.classList.toggle('fa-eye-slash');
+                });
+            }
+
+            // Submit do formulário
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const email = document.getElementById('email').value;
+                    const password = document.getElementById('password').value;
+                    
+                    if (email && password) {
+                        // Efeito de loading
+                        const originalText = loginButton.innerHTML;
+                        loginButton.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i>Entrando...';
+                        loginButton.disabled = true;
+                        
+                        // Simular processo de login
+                        setTimeout(() => {
+                            alert('Login realizado com sucesso!');
+                            
+                            // Fechar popup e resetar formulário
+                            closeLoginPopup();
+                            loginButton.innerHTML = originalText;
+                            loginButton.disabled = false;
+                            loginForm.reset();
+                            
+                            // Redirecionar para a página de lista de veículos
+                            window.location.href = 'lista_veiculos.html';
+                            
+                        }, 1500);
+                    } else {
+                        alert('Por favor, preencha todos os campos!');
+                    }
+                });
+            }
+
+            console.log('Popup de login configurado com sucesso!');
+        });
+    </script>
 </body>
 
 </html>

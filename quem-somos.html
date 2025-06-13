@@ -22,9 +22,60 @@
                 <li><a href="index.html">Início</a></li>
                 <li><a href="quem-somos.html" class="active">Quem Somos</a></li>
                 <li><a href="orcamento.html">Orçamento</a></li>
+                <li><a href="#" class="login-link" id="loginBtn">
+                    <i class="fas fa-user"></i> Login
+                </a></li>
             </ul>
         </nav>
     </header>
+
+    <!-- Login Overlay -->
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-popup">
+            <button class="close-btn" id="closeLogin">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <h2>
+                <i class="fas fa-user-circle" style="margin-right: 10px; color: var(--primary-color);"></i>
+                Login
+            </h2>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">
+                        <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                        E-mail
+                    </label>
+                    <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fas fa-lock" style="margin-right: 8px;"></i>
+                        Senha
+                    </label>
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" required placeholder="Digite sua senha">
+                        <i class="fas fa-eye password-toggle" id="togglePassword"></i>
+                    </div>
+                </div>
+                
+                <div class="login-options">
+                    <label class="remember-me">
+                        <input type="checkbox" id="remember">
+                        <span>Lembrar-me</span>
+                    </label>
+                    <a href="#" class="forgot-password">Esqueci minha senha</a>
+                </div>
+                
+                <button type="submit" class="login-btn" id="loginButton">
+                    <i class="fas fa-sign-in-alt" style="margin-right: 8px;"></i>
+                    Entrar
+                </button>
+            </form>
+        </div>
+    </div>
 
     <section class="page-banner">
         <div class="banner-content">
@@ -171,6 +222,17 @@
     </footer>
 
     <script src="assets/js/script.js"></script>
-</body>
-
-</html>
+    <script>
+        // Aguarda o DOM carregar completamente
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM carregado, inicializando popup de login...');
+            
+            // Elementos do popup de login
+            const loginBtn = document.getElementById('loginBtn');
+            const loginOverlay = document.getElementById('loginOverlay');
+            const closeLogin = document.getElementById('closeLogin');
+            const loginForm = document.getElementById('loginForm');
+            const togglePassword = document.getElementById('togglePassword');
+            const passwordField = document.getElementById('password');
+            const loginButton = document.getElementById('loginButton');
+            const

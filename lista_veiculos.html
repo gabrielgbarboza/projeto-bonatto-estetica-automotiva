@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Cadastro de Veículos</title>
+    <link rel="stylesheet" href="assets/style/vehicle-management.css">
+    <link rel="stylesheet" href="assets/style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+<body class="vehicle-management">
+    <header>
+        <div class="logo-container">
+            <img src="assets/img/logo.jpg" alt="Bonatto Estética Automotiva Logo" class="logo">
+        </div>
+        <nav>
+            <div class="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="lista_veiculos.html" class="active">Veículos</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <div class="header">
+            <h1><i class="fas fa-car"></i> Sistema de Veículos</h1>
+            <p>Gerencie seus veículos de forma simples e eficiente</p>
+        </div>
+
+        <div class="content">
+            <div class="action-bar">
+                <button class="btn-add" onclick="openModal()">
+                    <i class="fas fa-plus"></i>
+                    Adicionar Veículo
+                </button>
+                <div class="vehicle-count">
+                    <i class="fas fa-list"></i>
+                    Total: <span id="vehicleCount">4</span> veículos
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th><i class="fas fa-id-card"></i> Placa</th>
+                            <th><i class="fas fa-car"></i> Modelo</th>
+                            <th><i class="fas fa-palette"></i> Cor</th>
+                            <th><i class="fas fa-cog"></i> Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="vehicleTableBody">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Cadastro de Veículo</h2>
+                <button class="modal-close" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="success-message" id="successMessage">
+                    Veículo cadastrado com sucesso!
+                </div>
+
+                <form id="vehicleForm">
+                    <div class="form-group">
+                        <label for="placa">
+                            <i class="fas fa-id-card"></i> Placa
+                        </label>
+                        <input type="text" id="placa" name="placa" placeholder="ABC1D23" maxlength="7" required>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="form-group">
+                        <label for="modelo">
+                            <i class="fas fa-car"></i> Modelo
+                        </label>
+                        <input type="text" id="modelo" name="modelo" placeholder="Ex: Honda Civic, Toyota Corolla" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cor">
+                            <i class="fas fa-palette"></i> Cor
+                        </label>
+                        <input type="text" id="cor" name="cor" placeholder="Ex: Branco, Preto, Prata" required>
+                    </div>
+
+                    <div class="services-section">
+                        <label>
+                            <i class="fas fa-tools"></i> Serviços Disponíveis
+                        </label>
+                        <div class="services-container" id="servicesContainer">
+                            </div>
+                        <div class="selected-services-count" id="selectedCount">
+                            0 serviços selecionados
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                    Cancelar
+                </button>
+                <button type="submit" form="vehicleForm" class="btn btn-primary">
+                    <i class="fas fa-save"></i>
+                    Salvar Veículo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <img src="assets/img/logo.jpg" alt="Bonatto Estética Automotiva Logo" class="footer-logo">
+                <p>Serviços de estética automotiva de alta qualidade em Florianópolis.</p>
+            </div>
+            <div class="footer-contact">
+                <h3>Contato</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Bairro Santinho, Florianópolis - SC</p>
+                <p><i class="fas fa-phone"></i> (48) 9188-2779</p>
+                <p><i class="fas fa-envelope"></i> contato@bonattoautomotiva.com.br</p>
+            </div>
+            <div class="footer-social">
+                <h3>Redes Sociais</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/p/Bonatto-Est%C3%A9tica-Automotiva-100043148096655/?_rdr" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/bonatto_estetica_automotiva/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/c/554891882779" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Bonatto Estética Automotiva. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/global.js"></script>
+    <script src="assets/js/lista_veiculos.js"></script>
+</body>
+</html>

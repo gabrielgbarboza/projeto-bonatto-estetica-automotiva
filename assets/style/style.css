@@ -26,6 +26,13 @@ body {
   line-height: 1.6;
   color: var(--dark-color);
   background-color: var(--white);
+  /* These were specific to lista_veiculos for fixed header and full height,
+     integrate them here if lista_veiculos is the primary layout, or
+     make them specific to .main-container if only for content area */
+  padding-top: 120px; /* Space for the fixed header */
+  min-height: 100vh; /* Ensure body takes full viewport height */
+  display: flex; /* For flex layout of content and footer */
+  flex-direction: column; /* For flex layout of content and footer */
 }
 
 a {
@@ -126,6 +133,9 @@ header.sticky {
 .logo {
   height: 50px;
   transition: var(--transition);
+  /* From lista_veiculos styles */
+  width: auto; /* */
+  border-radius: 8px; /* */
 }
 
 header.sticky .logo {
@@ -216,7 +226,39 @@ header.sticky .logo {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
   margin-top: 40px;
+  /* Specific to lista_veiculos services selection in modal */
+  border: 2px solid #e0e0e0; /* */
+  border-radius: 10px; /* */
+  background-color: #fafafa; /* */
+  max-height: 200px; /* */
+  overflow-y: auto; /* */
+  padding: 10px 0; /* */
 }
+
+.services-container:focus-within { /* Specific to lista_veiculos services selection in modal */
+    border-color: #116d4d; /* */
+    box-shadow: 0 0 0 3px rgba(17, 109, 77, 0.1); /* */
+}
+
+/* Scrollbar personalizada for services-container */
+.services-container::-webkit-scrollbar { /* */
+    width: 6px; /* */
+}
+
+.services-container::-webkit-scrollbar-track { /* */
+    background: #f1f1f1; /* */
+    border-radius: 10px; /* */
+}
+
+.services-container::-webkit-scrollbar-thumb { /* */
+    background: linear-gradient(135deg, #116d4d, #a3ce63); /* */
+    border-radius: 10px; /* */
+}
+
+.services-container::-webkit-scrollbar-thumb:hover { /* */
+    background: linear-gradient(135deg, #0e5a42, #8db856); /* */
+}
+
 
 .service-card {
   background-color: var(--white);
@@ -467,6 +509,7 @@ footer {
   align-items: center;
 }
 
+.contact-info .contact-item i, /* Ensure specific i for contact info is not overridden */
 .footer-contact i {
   margin-right: 10px;
   width: 20px;
@@ -993,4 +1036,213 @@ select:focus {
   .certification-item {
     padding: 20px;
   }
+}
+ /* Login Popup Styles */
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .login-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .login-popup {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+            margin: 20px;
+            transform: translateY(-50px) scale(0.9);
+            transition: transform 0.4s ease-out;
+        }
+
+        .login-overlay.active .login-popup {
+            transform: translateY(0) scale(1);
+        }
+
+        .login-popup h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark-gray);
+            transition: var(--transition);
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            color: var(--primary-color);
+            transform: rotate(90deg);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: var(--transition);
+            background-color: #fafafa;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background-color: var(--white);
+            box-shadow: 0 0 0 3px rgba(17, 109, 77, 0.1);
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--dark-gray);
+            transition: var(--transition);
+        }
+
+        .password-toggle:hover {
+            color: var(--primary-color);
+        }
+
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .remember-me input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .forgot-password {
+            color: var(--primary-color);
+            transition: var(--transition);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .forgot-password:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(17, 109, 77, 0.3);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .login-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .login-link {
+            margin-left: 20px;
+            color: #ffffff;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .login-link:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .nav-links .login-link {
+                display: block;
+                padding: 15px 30px;
+                font-size: 18px;
+                margin: 0;
+            }
+
+            .login-popup {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+        }
+        /* Add to style.css - Body override for vehicle management pages */
+body.vehicle-management {
+    padding-top: 120px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
